@@ -28,5 +28,5 @@ The experimental data in Opt1_acidic_tst.csv were taken from the previous study 
 When you use the experimental data, please cite their study. 
 
 ## Limitations
-At the current version, the script files to prepare the concatenated vectors. 
+At the current version, the script files to prepare the concatenated vectors are not included. 
 This is because the scrips employ the quantum chemical packages (Gaussian and GAMESS). 
