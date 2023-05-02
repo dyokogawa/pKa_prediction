@@ -9,11 +9,8 @@ import pytorch_lightning as pl
 
 
 class AlexNet_small(pl.LightningModule):
-    def __init__(self, extractor, feature_dim, use_encoder, nfeatures0, nfeatures1, p, val_losses=None):
+    def __init__(self, feature_dim, nfeatures0, nfeatures1, p, val_losses=None):
         super(AlexNet_small, self).__init__()
-
-        if use_encoder:     
-            self.encoder = extractor.encoder
 
         self.classifier = nn.Sequential(
                             nn.Linear(feature_dim, nfeatures0),
@@ -36,12 +33,9 @@ class AlexNet_small(pl.LightningModule):
                             )
 
         self.top_layer = nn.Linear(nfeatures0, 1)
-        self.use_encoder = use_encoder
         self.val_losses = val_losses
 
     def forward(self, x):
-        if self.use_encoder:
-            x = self.encoder(x)
         x = self.classifier(x)
         x = self.top_layer(x)
         return x

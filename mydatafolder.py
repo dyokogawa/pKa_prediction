@@ -57,6 +57,7 @@ def get_data(dir, fname, ref_list):
     df = pd.read_csv(ref_list)
     cid = re.search('(.*)(_)(.*)(_)',fname).group(1)
     pka = df.loc[df['CID'] == cid,'pKa']
+
     target = np.float32(pka)[0]
 
     path = os.path.join(dir, fname)
@@ -127,7 +128,7 @@ def mydataset(root,fname,maxval,ref_list):
 
 class MyDatasetFolder(data.Dataset):
 
-    def __init__(self, root, extensions, nprop, kbond, elist, ref_list, checkpoint, use_encoder, loader=default_loader):
+    def __init__(self, root, extensions, nprop, kbond, elist, ref_list, loader=default_loader):
         samples = make_dataset(root, extensions, elist, ref_list)
         if len(samples) == 0:
             raise(RuntimeError("Found 0 files in subfolders of: " + root + "\n"
@@ -139,11 +140,8 @@ class MyDatasetFolder(data.Dataset):
 
         self.samples = samples
   
-        if use_encoder: 
-            self.maxval = checkpoint['maxval']
-        else: 
-            self.maxval = get_maxval(samples,nprop,kbond)
-            self.avg    = get_avg(samples,nprop,kbond,self.maxval)
+        self.maxval = get_maxval(samples,nprop,kbond)
+        self.avg    = get_avg(samples,nprop,kbond,self.maxval)
 
     def __getitem__(self, index):
         """

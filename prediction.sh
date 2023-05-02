@@ -14,7 +14,6 @@ FNAME=${CID}"_H_"${num}.dat
 #
 REF_LIST="Opt1_acidic_tst.csv"
 DIR="./element_data/"
-CKPT1="./ckpt/H_k10_h20_f10_typeM_CAM_ACCD.ckpt"
 KBOND=10
 NPROP=9
 HIDDEN_DIM=20
@@ -50,7 +49,7 @@ for HP in ${HYPER_LIST[@]}; do
 #
 #  
 #
-   python prediction.py ${DIR} --kbond ${KBOND} --nprop ${NPROP} --hidden_dim ${HIDDEN_DIM} --ckpt1 ${CKPT1} --ckpt2 ${CKPT2} --ckpt3 $MAXVAL --fname ${FNAME} --ref_list ${REF_LIST} --nf0 ${NF0} --nf1 ${NF1} >> pKa.tmp
+   python prediction.py ${DIR} --kbond ${KBOND} --nprop ${NPROP} --hidden_dim ${HIDDEN_DIM} --ckpt2 ${CKPT2} --ckpt3 $MAXVAL --fname ${FNAME} --ref_list ${REF_LIST} --nf0 ${NF0} --nf1 ${NF1} >> pKa.tmp
 
 done
 
