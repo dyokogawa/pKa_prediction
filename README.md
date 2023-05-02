@@ -32,7 +32,8 @@ If users want to train new data, please execute the following:
 
    ./training.sh
 
-The model is trained using the concatenated vectors in ./element_data directory.
+The model is trained using the training data listed in Opt1_acidic_tr.csv file. 
+In the training, the concatenated vectors in ./element_data directory are used. 
 
 ## How to prepare the concatenated vectors
 The concatenated vectors can be prepared from sdf file.
