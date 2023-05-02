@@ -32,7 +32,7 @@ If users want to train new data, please execute the following:
 
    ./training.sh
 
-The model is trained using the concatenated vectors in XXXXX.
+The model is trained using the concatenated vectors in ./element_data directory.
 
 ## How to prepare the concatenated vectors
 The concatenated vectors can be prepared from sdf file.
