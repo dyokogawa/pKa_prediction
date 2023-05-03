@@ -34,17 +34,17 @@ To predict the pKa value of "3-methylbenzenesulfonic acid",
 
    ./prediction.sh C617970 H19
 
-## Preparation of the concatenated vectors
+### Preparation of the concatenated vectors
 The concatenated vectors can be prepared from sdf file.
 The script file is stored in ./element_data/scripts directory.
 
-### (Details of the concatenated vectors)
+#### (Details of the concatenated vectors)
 H<sup>(L)</sup> in element_data were prepared under the following condistions:
    - number of convolution layers (L) : 10
    - atomic feature: MAP (the properties were prepared with CAM-B3LYP/aug-cc-pVDZ.)
    - convolution process : important graph convolution
 
-### (Example)
+#### (Example)
 To prepare the concatenated vectors of the molecules in example.sdf,
 
    python mk_edata.py
