@@ -1,18 +1,10 @@
 import os
 import argparse
-from pathlib import Path
-from typing import Optional, Union, Tuple
-from sklearn.cluster import KMeans
 
 import pandas as pd
 import numpy as np
 import pytorch_lightning as pl
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
 from pytorch_lightning.callbacks import ModelCheckpoint
 
 from  mydatafolder import MyDatasetFolder, pKa_shift
