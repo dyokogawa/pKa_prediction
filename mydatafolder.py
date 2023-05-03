@@ -67,6 +67,15 @@ def get_data(dir, fname, ref_list):
 
     return images
 
+def get_data_IG(dir, fname):
+    images = []
+    dir = os.path.expanduser(dir)
+
+    path = os.path.join(dir, fname)
+    images.append(path)
+
+    return images
+
 def get_maxval(samples,nprop,kbond):
 
     maxval = np.zeros((nprop,1))
@@ -125,6 +134,16 @@ def mydataset(root,fname,maxval,ref_list):
     sample = minmaxnormal(sample,maxval)
 
     return sample, target
+
+def mydataset_IG(root,fname,maxval):
+    samples = get_data_IG(root, fname)
+
+    path = samples[0]
+
+    sample = default_loader(path)
+    sample = minmaxnormal(sample,maxval)
+
+    return sample
 
 class MyDatasetFolder(data.Dataset):
 
