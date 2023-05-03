@@ -69,6 +69,14 @@ The wiberg bond index can be computed with Gaussian program coupled with NBO pro
 
 At the current version, the script file can prepare IAP concatenated vectors.
 
+### Analysis using Integrated Gradients (IGs)
+
+If you want to perform the analysis using Integrated Gradients, execute the following:
+
+   ./IG.sh
+
+The obtained IGs are decomposed into the atomic properties at the k-th layer.
+
 ## Experimental data 
 The experimental data in Opt1_acidic_tst.csv were taken from the previous study (DOI: [https://doi.org/10.1186/s13321-019-0384-1](https://doi.org/10.1186/s13321-019-0384-1)). 
 When you use the experimental data, please cite their study. 
