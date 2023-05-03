@@ -5,13 +5,31 @@ We can obtain the predicted pKa about the molecules in Opt1_acidic_tst.csv.
 
 ## Instructions
 
-To perform the prediction, execute the following:
+### Training
+The trained data were stored in ./ckpt directory. 
+If users want to train new data, please execute the following:
+
+   ./training.sh
+
+The model is trained using the training data listed in Opt1_acidic_tr.csv file.
+In the training, the concatenated vectors in ./element_data directory are used.
+
+### Prediction
+
+There are tow ways to predict pKa. 
+If you have a target molecule, execute the following:
 
    ./prediction.sh CID group
 
 The arguments, "CID" and "group", are listed in Opt1_acidic_tst.csv.
 
-### (Example)
+If you want to get the predicted pKa data about the molecules listed in Opt1_acidic_tst.csv, execute the following:
+
+   ./loss_test.sh
+
+The predicted data are stored in loss.log
+
+#### (Example)
 To predict the pKa value of "3-methylbenzenesulfonic acid", 
 
    ./prediction.sh C617970 H19
@@ -25,15 +43,6 @@ H<sup>(L)</sup> in element_data were prepared under the following condistions:
 ## Experimental data 
 The experimental data in Opt1_acidic_tst.csv were taken from the previous study (DOI: [https://doi.org/10.1186/s13321-019-0384-1](https://doi.org/10.1186/s13321-019-0384-1)). 
 When you use the experimental data, please cite their study. 
-
-## How to train the model
-In the prediction, the trained model is used. 
-If users want to train new data, please execute the following:
-
-   ./training.sh
-
-The model is trained using the training data listed in Opt1_acidic_tr.csv file. 
-In the training, the concatenated vectors in ./element_data directory are used. 
 
 ## How to prepare the concatenated vectors
 The concatenated vectors can be prepared from sdf file.
