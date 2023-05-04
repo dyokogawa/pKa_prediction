@@ -3,7 +3,7 @@ This is the code and data for the paper, "Feature selection in molecular graph n
 The concatenated vectors about the molecules listed in Opt1_acidic_tst.csv were stored in element_data.
 We can obtain the predicted pKa about the molecules in Opt1_acidic_tst.csv.
 
-## Instructions
+## Usage
 
 ### Training
 The trained data were stored in ./ckpt directory. 
@@ -81,3 +81,11 @@ The obtained IGs are decomposed into the atomic properties at the k-th layer.
 The experimental data in Opt1_acidic_tst.csv were taken from the previous study (DOI: [https://doi.org/10.1186/s13321-019-0384-1](https://doi.org/10.1186/s13321-019-0384-1)). 
 When you use the experimental data, please cite their study. 
 
+## Requirements
+
+* python 3.7.13
+* numpy 1.21.5
+* pandas 1.3.5
+* pytorch_lightning 1.7.7
+* torch 1.13.1
+* tqdm 4.64.1
