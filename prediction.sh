@@ -34,7 +34,7 @@ HYPER_LIST=("BEST1" "BEST2" "BEST3" "BEST4" "BEST5")
 for HP in ${HYPER_LIST[@]}; do
    CKPT2="./ckpt/${FEATURE_TYPE}/${KBOND}/best_loss_${HP}.ckpt"
    MAXVAL="./ckpt/${FEATURE_TYPE}/${KBOND}/maxval_${HP}.ckpt"
-   NF_LIST="./ckpt/${FEATURE_TYPE}/${KBOND}/NF_LIST"
+   NF_LIST="./hp_parameters/${FEATURE_TYPE}/${KBOND}/NF_LIST"
 
    NF0=`grep ${HP} ${NF_LIST} | awk '{print $2}'`
    NF1=`grep ${HP} ${NF_LIST} | awk '{print $3}'`
