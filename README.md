@@ -16,7 +16,7 @@ In the training, the concatenated vectors in ./element_data directory are used.
 
 ### Prediction
 
-There are tow ways to predict pKa. 
+There are two ways to predict pKa. 
 If you have a target molecule, execute the following:
 
    ./prediction.sh CID group
