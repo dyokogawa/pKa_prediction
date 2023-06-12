@@ -30,9 +30,9 @@ If you want to get the predicted pKa data about the molecules listed in Opt1_aci
 The predicted data are stored in loss.log
 
 #### (Example)
-To predict the pKa value of "3-methylbenzenesulfonic acid", 
+To predict the pKa value of "3-methylbenzenesulfonic acid" using MAP_HF feature with 5 convolution layers, 
 
-   ./prediction.sh C617970 H19
+   ./prediction.sh C617970 H19 MAP_HF 5
 
 ### Preparation of the concatenated vectors
 The concatenated vectors can be prepared from sdf file.
