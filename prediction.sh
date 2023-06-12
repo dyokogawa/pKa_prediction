@@ -4,6 +4,8 @@
 #
 CID=$1
 group=$2
+FEATURE_TYPE=$3
+KBOND=$4
 #
 # set FNAME
 #
@@ -13,10 +15,13 @@ FNAME=${CID}"_H_"${num}.dat
 #
 #
 REF_LIST="Opt1_acidic_tst.csv"
-DIR="./element_data/"
-KBOND=10
-NPROP=9
+DIR="./element_data/${FEATURE_TYPE}/${KBOND}/"
 HIDDEN_DIM=20
+if [ ${FEATURE_TYPE} = "MAP_CAM" -o ${FEATURE_TYPE} = "MAP_HF" ]; then
+   NPROP=9
+else
+   NPROP=6
+fi
 #
 #
 #
