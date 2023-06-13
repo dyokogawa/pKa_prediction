@@ -3,20 +3,27 @@
 # CLUSTERING: Kmeans or PIC
 #
 
-KBOND=10
-TYPE="M"
+FEATURE_TYPE=$1
+KBOND=$2
+
 ELIST="H"
 REF_LIST="Opt1_acidic_tr.csv"
 
-NPROP=9
-DIR="./element_data/"
+DIR="./element_data/${FEATURE_TYPE}/${KBOND}/"
 NEPOCH=3000
+if [ ${FEATURE_TYPE} = "MAP_CAM" -o ${FEATURE_TYPE} = "MAP_HF" ]; then
+   NPROP=9
+else
+   NPROP=6
+fi
 #
 # HYPER PARAMETERS
 #
-NF0=140
-NF1=170
-RATIO=0.14159586227379684
+NF_LIST="./hp_parameters/${FEATURE_TYPE}/${KBOND}/NF_LIST"
+
+NF0=`grep BEST1 ${NF_LIST} | awk '{print $2}'`
+NF1=`grep BEST1 ${NF_LIST} | awk '{print $3}'`
+RATIO=`grep BEST1 ${NF_LIST} | awk '{print $4}'`
 #
 # 
 #

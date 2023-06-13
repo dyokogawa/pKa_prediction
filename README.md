@@ -15,10 +15,10 @@ You can choose LAYER and TYPE in the following training and prediction.
 The trained data were stored in ./ckpt directory. 
 If users want to train new data, please execute the following:
 
-   ./training.sh
+   ./training.sh TYPE LAYER
 
 The model is trained using the training data listed in Opt1_acidic_tr.csv file.
-In the training, the concatenated vectors in ./element_data directory are used.
+You can set the atomic feature type (TYPE) and the number of convolution layers (LAYER).
 
 ### Prediction
 
