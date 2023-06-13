@@ -1,10 +1,16 @@
 #!/bin/bash
 
+FEATURE_TYPE=$1
+KBOND=$2
+
 REF_LIST="Opt1_acidic_tst.csv"
-DIR="./element_data/"
-KBOND=10
-NPROP=9
+DIR="./element_data/${FEATURE_TYPE}/${KBOND}/"
 HIDDEN_DIM=20
+if [ ${FEATURE_TYPE} = "MAP_CAM" -o ${FEATURE_TYPE} = "MAP_HF" ]; then
+   NPROP=9
+else
+   NPROP=6
+fi
 
 if [ -e loss.log ]; then
   rm -f loss.log
@@ -28,29 +34,16 @@ do
     fi
 
     for HP in ${HYPER_LIST[@]}; do
-      CKPT2="./ckpt/best_loss_${HP}.ckpt"
-      MAXVAL="./ckpt/maxval_${HP}.ckpt"
+      CKPT2="./ckpt/${FEATURE_TYPE}/${KBOND}/best_loss_${HP}.ckpt"
+      MAXVAL="./ckpt/${FEATURE_TYPE}/${KBOND}/maxval_${HP}.ckpt"
+      NF_LIST="./hp_parameters/${FEATURE_TYPE}/${KBOND}/NF_LIST"
 
-      if [ ${HP} = "BEST1" ]; then
-        NF0=140
-        NF1=170
-      elif [ ${HP} = "BEST2" ]; then
-        NF0=150
-        NF1=130
-      elif [ ${HP} = "BEST3" ]; then
-        NF0=140
-        NF1=100
-      elif [ ${HP} = "BEST4" ]; then
-        NF0=140
-        NF1=160
-      elif [ ${HP} = "BEST5" ]; then
-        NF0=120
-        NF1=130
-     fi
+      NF0=`grep ${HP} ${NF_LIST} | awk '{print $2}'`
+      NF1=`grep ${HP} ${NF_LIST} | awk '{print $3}'`
 #
-#   without encoder
+#  
 #
-     python prediction.py ${DIR} --kbond ${KBOND} --nprop ${NPROP} --hidden_dim ${HIDDEN_DIM} --ckpt2 ${CKPT2} --ckpt3 $MAXVAL --fname ${FNAME} --ref_list ${REF_LIST} --nf0 ${NF0} --nf1 ${NF1} >> pKa.tmp
+      python prediction.py ${DIR} --kbond ${KBOND} --nprop ${NPROP} --hidden_dim ${HIDDEN_DIM} --ckpt2 ${CKPT2} --ckpt3 $MAXVAL --fname ${FNAME} --ref_list ${REF_LIST} --nf0 ${NF0} --nf1 ${NF1} >> pKa.tmp
     done
 #
 #   ensemble average

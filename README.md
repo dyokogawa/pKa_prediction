@@ -6,8 +6,8 @@ The concatenated vectors about the molecules listed in Opt1_acidic_tst.csv were 
 
 In the training and prediction, the concatenated vectors in ./element_data directory are used. 
 The concatenated vectors (H<sup>(L)</sup>) in element_data were prepared under the following condistions:
-   - number of convolution layers (LAYER) : 1, 2, 3, 5, 7, 10
-   - atomic feature (TYPE): MAP_CAM (CAM-B3LYP/aug-cc-pVDZ), MAP_HF(HF/6-31G**), IAP 
+   - number of convolution layers (LAYER) : 1, 2, 3, 5, 7, or 10
+   - atomic feature (TYPE): MAP_CAM (CAM-B3LYP/aug-cc-pVDZ), MAP_HF(HF/6-31G**), or IAP 
    - convolution process : important graph convolution
 You can choose LAYER and TYPE in the following training and prediction.  
 
@@ -31,7 +31,7 @@ The arguments, "CID" and "group", are listed in Opt1_acidic_tst.csv.
 
 If you want to get the predicted pKa data about the molecules listed in Opt1_acidic_tst.csv, execute the following:
 
-   ./loss_test.sh
+   ./loss_test.sh TYPE LAYER
 
 The predicted data are stored in loss.log
 
