@@ -1,9 +1,15 @@
 # Prediction of pKa from the concatenated vector
 This is the code and data for the paper, "Feature selection in molecular graph neural networks based on quantum chemical approaches". This repository contains the code to predict pKa from the concatenated vector H<sup>(L)</sup>.
 The concatenated vectors about the molecules listed in Opt1_acidic_tst.csv were stored in element_data.
-We can obtain the predicted pKa about the molecules in Opt1_acidic_tst.csv.
 
 ## Usage
+
+In the training and prediction, the concatenated vectors in ./element_data directory are used. 
+The concatenated vectors (H<sup>(L)</sup>) in element_data were prepared under the following condistions:
+   - number of convolution layers (LAYER) : 1, 2, 3, 5, 7, 10
+   - atomic feature (TYPE): MAP_CAM (CAM-B3LYP/aug-cc-pVDZ), MAP_HF(HF/6-31G**), IAP 
+   - convolution process : important graph convolution
+You can choose LAYER and TYPE in the following training and prediction.  
 
 ### Training
 The trained data were stored in ./ckpt directory. 
@@ -19,7 +25,7 @@ In the training, the concatenated vectors in ./element_data directory are used.
 There are two ways to predict pKa. 
 If you have a target molecule, execute the following:
 
-   ./prediction.sh CID group
+   ./prediction.sh CID group TYPE LAYER
 
 The arguments, "CID" and "group", are listed in Opt1_acidic_tst.csv.
 
@@ -37,12 +43,6 @@ To predict the pKa value of "3-methylbenzenesulfonic acid" using MAP_HF feature 
 ### Preparation of the concatenated vectors
 The concatenated vectors can be prepared from sdf file.
 The script file is stored in ./element_data/scripts directory.
-
-#### (Details of the concatenated vectors)
-H<sup>(L)</sup> in element_data were prepared under the following condistions:
-   - number of convolution layers (L) : 10
-   - atomic feature: MAP (the properties were prepared with CAM-B3LYP/aug-cc-pVDZ.)
-   - convolution process : important graph convolution
 
 #### (Example)
 To prepare the concatenated vectors of the molecules in example.sdf,
